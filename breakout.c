@@ -141,7 +141,7 @@ int main(void)
             if (object == paddle)
             {
 
-                // Trying random direction and velocity on hit
+                // Random x velocity on paddle and brick hit
                 xVelocity = (rand() % 2 * 2 - 1) * (drand48() * 0.1);
                 yVelocity = -yVelocity;
             }
@@ -170,22 +170,20 @@ int main(void)
  */
 void initBricks(GWindow window)
 {
-    // initialize bricks. Do I have to name every single one of them?
-    // hope I don't get too affectionate
+    // initializes bricks.
     int bricks = COLS * ROWS;
     GRect rectArr[bricks];
     
     double x = SPACING;
     double y = FIRST_ROW_HEIGHT;
 
-    // the width of the bricks is the space / number of columns
-    // height is relative to width
+    // The width of the bricks is the space / number of columns
+    // Height is relative to width
     double bWidth = (WIDTH - SPACING * (COLS + 1)) / COLS;
     double bHeight = bWidth / 3;
     
     int k = 0;
-    // you can change the colours for the rows here.
-    // Yay! White was removed cause of BG colour
+    // Colours for the rows.
     char *colours[12] = {"BLACK", "BLUE", "CYAN", "DARK_GRAY", "GRAY", "GREEN", "LIGHT_GRAY", "MAGENTA", "ORANGE", "PINK", "RED", "YELLOW"};
     
     // creates the bricks, changes x and y adding brick's width + chosen spacing
